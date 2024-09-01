@@ -1,2 +1,4 @@
-puts "Let's play a game!"
-puts "😎" * 25
+name = "Finn"
+health = 60
+
+puts "#{name}'s health is #{health}"

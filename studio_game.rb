@@ -22,8 +22,6 @@ class Player
     end
 end
 
-
-
 class Game
     attr_reader :players, :title
 
@@ -55,7 +53,6 @@ class Game
                 player.boost
                 puts "#{player.name} got boosted"
             end
-            
         end
         puts "\nAfter playing:"
         puts players

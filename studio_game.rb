@@ -23,30 +23,33 @@ class Player
 end
 
 player_1 = Player.new("finn", 60)
+player_2 = Player.new("lucy", 90)
+player_3 = Player.new("jase")
+player_4 = Player.new("alex", 125)
 
-number_rolled = rand(1..6)
+players = [player_1, player_2, player_3, player_4,]
 
-case number_rolled
-when 1..2
-    player_1.drain
-    puts "#{player_1.name} got drained"
-when 3..4
-    puts "#{player_1.name} got skipped"
-else
-    player_1.boost
-    puts "#{player_1.name} got boosted"
+puts "Before playing:"
+puts players
+
+
+players.each do |player|
+    number_rolled = rand(1..6)
+    case number_rolled
+    when 1..2
+        player.drain
+        puts "#{player.name} got drained"
+    when 3..4
+        puts "#{player.name} got skipped"
+    else
+        player_1.boost
+        puts "#{player.name} got boosted"
+    end
+    
 end
 
 
-# player_1.boost
+puts "\nAfter playing:"
+puts players
 
-# player_2 = Player.new("lucy", 90)
-# player_2.drain
 
-# player_3 = Player.new("jase")
-# player_3.boost
-# player_3.boost
-
-# player_4 = Player.new("alex", 125)
-# player_4.drain
-# player_4.boost

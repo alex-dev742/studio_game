@@ -12,7 +12,7 @@ class Player
   end
 
   def boost
-      @health += 10
+      @health += 15
   end
 
   def to_s = "I'm #{@name} with a health of #{@health} and a score of #{score}"

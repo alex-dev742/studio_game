@@ -21,9 +21,7 @@ class Game
     puts "\nLet's play #{@title}!"
 
     puts "\nThe following treasures can be found:"
-    TreasureTrove::TREASURES.each do |treasure|
-        puts "A #{treasure.name} is worth #{treasure.points} points"
-    end
+    puts TreasureTrove.treasure_items
 
     puts "Before playing:"
     puts @players

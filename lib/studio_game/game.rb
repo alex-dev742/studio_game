@@ -38,18 +38,41 @@ class Game
               puts "#{player.name} got drained"
           when 3..4
               puts "#{player.name} got skipped"
-              puts "Finn found a key worth 80 points"
           else
               player.boost
               puts "#{player.name} got boosted"
-              puts "Finn found a key worth 80 points"
           end
 
           treasure = TreasureTrove.random_treasure
-          puts "#{player.name} found a #{treasure.name} worth #{treasure.points} points"
+
+          player.found_treasure(treasure.name, treasure.points)
       end
       puts "\nAfter playing:"
       puts @players
     end
+  end
+
+  def print_stats
+    puts "\n Game Stats:"
+    puts "-" * 60
+    puts sorted_players
+    @players.each do |player|
+      puts "\n#{player.name}'s treasure point totals:"
+      player.found_treasures.each do |name, points|
+        puts "#{name}: #{points}"
+      end
+      puts "total: #{player.points}"
+    end
+
+    puts "\nHigh Scores:"
+    sorted_players.each do |player|
+      name = player.name.ljust(40, ".")
+      points = player.score.round.to_s.rjust(5)
+      puts "#{name}#{points}"
+end
+  end
+
+  def sorted_players
+    @players.sort_by { |player| player.score }.reverse
   end
 end

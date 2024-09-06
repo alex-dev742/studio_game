@@ -12,3 +12,4 @@ game.add_player(player_2)
 game.add_player(player_3)
 game.add_player(player_4)
 game.play(3)
+game.print_stats

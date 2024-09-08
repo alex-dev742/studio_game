@@ -8,25 +8,27 @@ class Game
       @players = []
   end
 
-  def load_players(filename)
-    File.readlines(filename, chomp: true).each do |line|
-      name, health = line.split(",")
-      player = Player.new(name, health.to_i)
+  def load_players(from_file)
+    File.readlines(from_file, chomp: true).each do |line|
+      player = Player.from_csv(line)
       add_player(player)
     end
+  end
+
+  def high_score_entry(player)
+    name = player.name.ljust(20, ".")
+    points = player.score.round.to_s.rjust(5)
+    "#{name}#{points}"
   end
 
   def save_high_scores(to_file = "high_scores.txt")
     File.open(to_file, "w") do |file|
       file.puts "#{@title} High Scores:"
       sorted_players.each do |player|
-        name = player.name.ljust(20, ".")
-        score = player.score.round.to_s.rjust(5)
-        file.puts "#{name}#{score}"
+        file.puts high_score_entry(player)
       end
     end
   end
-  
 
   def add_player(player)
       @players.push(player)

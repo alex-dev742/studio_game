@@ -20,6 +20,11 @@ class Player
     "I'm #{@name} with health = #{@health}, points = #{points}, and score = #{score}"
   end
 
+  def self.from_csv(line)
+    name, health = line.split(',')
+    Player.new(name, health.to_i)
+  end
+
   def score
       @health + points
   end

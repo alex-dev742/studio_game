@@ -16,16 +16,16 @@ class PlayerTest < Minitest::Test
     assert_equal 60, player.health
   end
 
-  def test_computes_score_as_sum_of_health_and_length_of_name
+  def test_computes_score_as_sum_of_health_and_points
     player = Player.new("finn", 60)
 
-    assert_equal 64, player.score
+    assert_equal 60, player.score
   end
 
   def test_has_a_string_representation
     player = Player.new("finn", 60)
 
-    assert_equal "I'm Finn with a health of 60 and a score of 64", player.to_s
+    assert_equal "I'm Finn with health = 60, points = 0, and score = 60", player.to_s
   end
 
   def test_player_can_be_boosted_by_15

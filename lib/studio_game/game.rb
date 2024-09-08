@@ -23,7 +23,7 @@ class Game
     puts "\nThe following treasures can be found:"
     puts TreasureTrove.treasure_items
 
-    puts "Before playing:"
+    puts "\nBefore playing:"
     puts @players
 
     1.upto(rounds) do |round|

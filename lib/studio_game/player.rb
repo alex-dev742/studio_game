@@ -22,7 +22,10 @@ class Player
 
   def self.from_csv(line)
     name, health = line.split(',')
-    Player.new(name, health.to_i)
+    Player.new(name, Integer(health))
+  rescue ArgumentError
+    puts "Ignored invalid health: #{health}"
+    Player.new(name)  
   end
 
   def score

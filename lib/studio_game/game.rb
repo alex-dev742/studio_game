@@ -1,6 +1,10 @@
 require_relative "treasure_trove"
+require_relative "auditable"
 
 class Game
+
+  include Auditable
+
   attr_reader :players, :title
 
   def initialize(title)
@@ -38,7 +42,9 @@ class Game
   end
 
   def roll_die
-      rand(1..6)
+    number = rand(1..6)
+    audit(number)
+    number
   end
 
   def play(rounds = 1)

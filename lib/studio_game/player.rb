@@ -1,19 +1,15 @@
+require_relative "playable"
 class Player
-  attr_accessor :name
-  attr_reader :health, :found_treasures
+
+  include Playable
+
+  attr_accessor :name, :health
+  attr_reader :found_treasures
 
   def initialize(name, health = 100)
       @name = name.capitalize
       @health = health
       @found_treasures = Hash.new(0)
-  end
-
-  def drain
-      @health -= 10
-  end
-
-  def boost
-      @health += 15
   end
 
   def to_s

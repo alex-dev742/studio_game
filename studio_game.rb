@@ -1,11 +1,19 @@
 require_relative "lib/studio_game/game"
 require_relative "lib/studio_game/player"
+require_relative "lib/studio_game/clumsy_player"
+require_relative "lib/studio_game/berserk_player"
 
 players_file = File.join(__dir__, "players.csv")
 
 game = Game.new("Winner Takes All")
 
 game.load_players(ARGV.shift || players_file)
+
+clumsy = ClumsyPlayer.new("klutz", 105)
+berserker = BerserkPlayer.new("berserker", 50)
+
+game.add_player(clumsy)
+game.add_player(berserker)
 
 loop do
   print "\nHow many game rounds? ('quit' to exit) "
